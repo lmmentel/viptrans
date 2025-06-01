@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Trans - Przewóz osób do Belgii, Holandii, Niemiec oraz Luksemburga</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #2c3e50;
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-menu a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      min-height: 600px;
+    }
+
+    .hero-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(44, 62, 80, 0.4);
+      z-index: 1;
+    }
+
+    .slide-1 {
+      background-image: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.4)),
+        url('assets/karsten-wurth-rafblRbne3o-unsplash.jpg');
+    }
+
+    .slide-2 {
+      background-image: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.4)),
+        url('assets/azhar-j-t2hgHV1R7_g-unsplash.jpg');
+    }
+
+    .slide-3 {
+      background-image: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.4)),
+        url('assets/nick-fewings-br9D5K3UTRQ-unsplash.jpg');
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+      background: #3498db;
+      transform: scale(1.2);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .cta-button:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #2c3e50;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #3498db;
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about {
+      background: #f8f9fa;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .about-features {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .feature {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h3 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #3498db;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #3498db;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    /* Schedule Section */
+    .schedule {
+      background: #2c3e50;
+      color: white;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .schedule-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .schedule-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .schedule-card p {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      background: #34495e;
+      height: 200px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      background: #2c3e50;
+      transform: translateY(-3px);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: #f8f9fa;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: #3498db;
+      width: 40px;
+    }
+
+    .regions {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .regions h3 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .regions ul {
+      list-style: none;
+    }
+
+    .regions li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      color: #3498db;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #34495e;
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">VIP TRANS</a>
+      <ul class="nav-menu">
+        <li><a href="#about">O Nas</a></li>
+        <li><a href="#services">Oferta</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-carousel">
+      <div class="carousel-slide slide-1 active"></div>
+      <div class="carousel-slide slide-2"></div>
+      <div class="carousel-slide slide-3"></div>
+    </div>
+    <div class="hero-content">
+      <h1>VIP TRANS</h1>
+      <p>Przewóz osób do Belgii, Holandii, Niemiec oraz Luksemburga</p>
+      <a href="#contact" class="cta-button">Skontaktuj się z nami</a>
+    </div>
+    <div class="carousel-indicators">
+      <div class="indicator active" data-slide="0"></div>
+      <div class="indicator" data-slide="1"></div>
+      <div class="indicator" data-slide="2"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">O Nas</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>VIP Trans to firma transportowa z wieloletnim doświadczeniem w przewozie osób i towarów do krajów Europy
+            Zachodniej. Specjalizujemy się w transporcie busami, oferując usługi na najwyższym poziomie.</p>
+          <p>Nasze usługi realizowane są w trybie door-to-door, co oznacza, że przewóz osób odbywa się ze wskazanego
+            przez Klienta miejsca pod konkretny adres. Zapewniamy komfort, bezpieczeństwo i punktualność.</p>
+        </div>
+        <div class="about-features">
+          <div class="feature">
+            <h3>🚐 Nowoczesna Flota</h3>
+            <p>Dysponujemy nowoczesnymi busami zapewniającymi komfort podróży</p>
+          </div>
+          <div class="feature">
+            <h3>🛡️ Bezpieczeństwo</h3>
+            <p>Wszystkie pojazdy są regularnie serwisowane i ubezpieczone</p>
+          </div>
+          <div class="feature">
+            <h3>⏰ Punktualność</h3>
+            <p>Gwarantujemy dotrzymanie ustalonych terminów wyjazdu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Nasza Oferta</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3>Przewóz Osób</h3>
+          <p>Organizujemy transport pracowników sezonowych, opiekunek osób starszych oraz rodzin z dziećmi i młodzieży
+            do Holandii, Belgii, Niemiec oraz Luksemburga.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>Transport Przesyłek</h3>
+          <p>Zapewniamy transport przesyłek i paczek o różnych gabarytach między Polską a krajami Europy Zachodniej.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏠</div>
+          <h3>Door-to-Door</h3>
+          <p>Usługa przewozu ze wskazanego przez Klienta miejsca pod konkretny adres docelowy, zapewniając maksymalną
+            wygodę.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="section schedule">
+    <div class="container">
+      <h2 class="section-title">Rozkład Jazdy</h2>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <h3>🇵🇱 Wyjazd z Polski</h3>
+          <p>Środa i Sobota</p>
+        </div>
+        <div class="schedule-card">
+          <h3>🇪🇺 Wyjazd z zagranicy</h3>
+          <p>Czwartek i Niedziela</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2 class="section-title">Galeria</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">Nowoczesne Busy</div>
+        <div class="gallery-item">Komfortowe Wnętrza</div>
+        <div class="gallery-item">Profesjonalna Obsługa</div>
+        <div class="gallery-item">Bezpieczny Transport</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Skontaktuj się z nami</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Adres:</strong><br>
+              Nad Drwęcą 91
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Telefon:</strong><br>
+              +48 883 615 094
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <strong>Email:</strong><br>
+              vip.trans@op.pl
+            </div>
+          </div>
+        </div>
+        <div class="regions">
+          <h3>Obszar działania</h3>
+          <p>Świadczymy usługi w województwach:</p>
+          <ul>
+            <li>✓ Warmińsko-mazurskie</li>
+            <li>✓ Kujawsko-pomorskie</li>
+            <li>✓ Wielkopolskie</li>
+            <li>✓ Lubuskie</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>VIP Trans</h3>
+          <p>Profesjonalne usługi transportowe do krajów Europy Zachodniej</p>
+        </div>
+        <div class="footer-section">
+          <h3>Kontakt</h3>
+          <p>📞 +48 883 615 094</p>
+          <p>📧 vip.trans@op.pl</p>
+        </div>
+        <div class="footer-section">
+          <h3>Kierunki</h3>
+          <p>🇳🇱 Holandia</p>
+          <p>🇧🇪 Belgia</p>
+          <p>🇩🇪 Niemcy</p>
+          <p>🇱🇺 Luksemburg</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 VIP Trans. Wszystkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Hero Carousel functionality
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      // Remove active class from all slides and indicators
+      slides.forEach(slide => slide.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+
+      // Add active class to current slide and indicator
+      slides[index].classList.add('active');
+      indicators[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Auto-advance carousel every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Manual control via indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.service-card, .feature, .contact-info, .regions').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>
