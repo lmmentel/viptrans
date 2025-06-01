@@ -360,15 +360,15 @@
     /* Gallery Section */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
       margin-top: 3rem;
     }
 
     .gallery-item {
       background: #34495e;
-      height: 200px;
-      border-radius: 8px;
+      height: 300px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -550,7 +550,7 @@
       <h2 class="section-title">O Nas</h2>
       <div class="about-content">
         <div class="about-text">
-          <p>VIP Trans to firma transportowa z wieloletnim doświadczeniem w przewozie osób i towarów do krajów Europy
+          <p>VIP Trans to firma transportowa z doświadczeniem w przewozie osób i towarów do krajów Europy
             Zachodniej. Specjalizujemy się w transporcie busami, oferując usługi na najwyższym poziomie.</p>
           <p>Nasze usługi realizowane są w trybie door-to-door, co oznacza, że przewóz osób odbywa się ze wskazanego
             przez Klienta miejsca pod konkretny adres. Zapewniamy komfort, bezpieczeństwo i punktualność.</p>
@@ -613,6 +613,28 @@
           <p>Czwartek i Niedziela</p>
         </div>
       </div>
+      <div class="schedule-grid" style="margin-top:2rem;">
+        <div class="schedule-card" style="display: flex; flex-direction: column; align-items: center;">
+          <h3>Obszar działania</h3>
+          <ul
+            style="list-style: none; padding: 0; margin: 0; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+            <li style="font-size: 1.2rem;">✅ Warmińsko-mazurskie</li>
+            <li style="font-size: 1.2rem;">✅ Kujawsko-pomorskie</li>
+            <li style="font-size: 1.2rem;">✅ Wielkopolskie</li>
+            <li style="font-size: 1.2rem;">✅ Lubuskie</li>
+          </ul>
+        </div>
+        <div class="schedule-card" style="display: flex; flex-direction: column; align-items: center;">
+          <h3>Kierunki</h3>
+          <ul
+            style="list-style: none; padding: 0; margin: 0; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+            <li style="font-size: 1.2rem;">🇳🇱 Holandia</li>
+            <li style="font-size: 1.2rem;">🇧🇪 Belgia</li>
+            <li style="font-size: 1.2rem;">🇩🇪 Niemcy</li>
+            <li style="font-size: 1.2rem;">🇱🇺 Luksemburg</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -622,20 +644,31 @@
       <h2 class="section-title">Galeria</h2>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="assets/1.jpeg" alt="Nowoczesne Busy"
-            style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+          <img src="assets/4.jpeg" alt="Galeria 1" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="gallery-item">
-          <img src="assets/2.jpeg" alt="Komfortowe Wnętrza"
-            style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+          <img src="assets/2.jpeg" alt="Galeria 2" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="gallery-item">
-          <img src="assets/3.jpeg" alt="Profesjonalna Obsługa"
-            style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+          <img src="assets/3.jpeg" alt="Galeria 3" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
         <div class="gallery-item">
-          <img src="assets/4.jpeg" alt="Bezpieczny Transport"
-            style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+          <img src="assets/5.jpeg" alt="Galeria 5" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/6.jpeg" alt="Galeria 6" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/7.jpeg" alt="Galeria 7" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/8.jpeg" alt="Galeria 8" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/9.jpeg" alt="Galeria 9" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/10.jpeg" alt="Galeria 10" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
         </div>
       </div>
     </div>
@@ -659,26 +692,20 @@
             <div class="contact-icon">📞</div>
             <div>
               <strong>Telefon:</strong><br>
-              +48 883 615 094
+              <a href="tel:+48883615094">+48 883 615 094</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">📧</div>
             <div>
               <strong>Email:</strong><br>
-              vip.trans@op.pl
+              <a href="mailto:vip.trans@op.pl">vip.trans@op.pl</a>
             </div>
           </div>
         </div>
         <div class="regions">
-          <h3>Obszar działania</h3>
-          <p>Świadczymy usługi w województwach:</p>
-          <ul>
-            <li>✓ Warmińsko-mazurskie</li>
-            <li>✓ Kujawsko-pomorskie</li>
-            <li>✓ Wielkopolskie</li>
-            <li>✓ Lubuskie</li>
-          </ul>
+          <img src="assets/vincent-wachowiak-izOMUD6GoqE-unsplash.jpg" alt="Obszar działania"
+            style="width:100%;border-radius:12px;object-fit:cover;max-height:320px;">
         </div>
       </div>
     </div>
