@@ -31,6 +31,19 @@
       transition: all 0.3s ease;
     }
 
+    #contact a {
+      color: #3498db;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+
+    #contact a:hover {
+      color: #2c3e50;
+      text-decoration: underline;
+    }
+
     .navbar.scrolled {
       padding: 0.5rem 0;
       backdrop-filter: blur(10px);
@@ -534,7 +547,7 @@
     </div>
     <div class="hero-content">
       <h1>VIP TRANS</h1>
-      <p>Przewóz osób do Belgii, Holandii, Niemiec oraz Luksemburga</p>
+      <h2>Przewóz osób do Belgii, Holandii, Niemiec oraz Luksemburga</h2>
       <a href="#contact" class="cta-button">Skontaktuj się z nami</a>
     </div>
     <div class="carousel-indicators">
@@ -595,6 +608,10 @@
           <p>Usługa przewozu ze wskazanego przez Klienta miejsca pod konkretny adres docelowy, zapewniając maksymalną
             wygodę.</p>
         </div>
+        <div class="service-card" style="grid-column: 1/-1; background: #eaf6fb; color: #2c3e50;">
+          <h3 style="color: #3498db;">🎉 Promocje i zniżki</h3>
+          <p style="font-size:1.2rem;">Dla stałych klientów co 5 przejazd za połowę ceny!</p>
+        </div>
       </div>
     </div>
   </section>
@@ -622,6 +639,7 @@
             <li style="font-size: 1.2rem;">✅ Kujawsko-pomorskie</li>
             <li style="font-size: 1.2rem;">✅ Wielkopolskie</li>
             <li style="font-size: 1.2rem;">✅ Lubuskie</li>
+            <li style="font-size: 1.2rem;">✅ Pomorskie</li>
           </ul>
         </div>
         <div class="schedule-card" style="display: flex; flex-direction: column; align-items: center;">
@@ -682,10 +700,16 @@
         <div class="contact-info">
           <h3>Skontaktuj się z nami</h3>
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#3498db"
+                aria-label="Facebook" style="vertical-align:middle;">
+                <path
+                  d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0" />
+              </svg>
+            </div>
             <div>
-              <strong>Adres:</strong><br>
-              Nad Drwęcą 91
+              <strong>Facebook:</strong><br>
+              <a href="https://www.facebook.com/profile.php?id=61576655407475">VIPTrans</a>
             </div>
           </div>
           <div class="contact-item">
@@ -721,6 +745,7 @@
         </div>
         <div class="footer-section">
           <h3>Kontakt</h3>
+          <p>📍 Nad Drwęcą 91, 87-162 Lubicz</p>
           <p>📞 +48 883 615 094</p>
           <p>📧 vip.trans@op.pl</p>
         </div>
